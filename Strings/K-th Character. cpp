@@ -1,0 +1,49 @@
+class Solution{
+public:		
+	
+	char kthCharacter(int m, int n, int k)
+	{
+	    string bin;
+	    if(m==0)
+	    {
+	        bin += '0';
+	    }
+	    
+	    if(m!=0)
+	    {
+	    while(m)
+	    {
+	        bin += to_string(m%2);
+	        m = m/2;
+	    }
+	    }
+	    reverse(bin.begin(),bin.end());
+	    string res;
+	    res = bin;
+	    while(n)
+	    {
+	        string temp = "";
+	        
+	        for(int i=0;i<bin.length();i++)
+	        {
+	            if(bin[i]=='0')
+	            {
+	                temp += "01";
+	            }
+	            else
+	            {
+	                temp += "10";
+	            }
+	           
+	         }
+	          res = temp;
+	          bin = temp;
+	          n--;
+	    }
+	    char c = res[k-1];
+	    return c;
+	    }
+	    
+	    
+	
+};
